@@ -29,8 +29,8 @@ google-classroom-mcp = "classroom_mcp.server:main"
 google-classroom-mcp-auth = "classroom_mcp.auth:main"
 
 [project.urls]
-Repository = "https://github.com/PTFacts/google-classroom-mcp"
-Issues = "https://github.com/PTFacts/google-classroom-mcp/issues"
+Repository = "https://github.com/praisethefacts/google-classroom-mcp"
+Issues = "https://github.com/praisethefacts/google-classroom-mcp/issues"
 
 [build-system]
 requires = ["hatchling"]

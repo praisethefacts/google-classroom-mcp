@@ -45,7 +45,7 @@ Every tool is read-only. The server cannot create, edit or delete anything in Cl
 ### 2. Install
 
 ```bash
-git clone https://github.com/PTFacts/google-classroom-mcp
+git clone https://github.com/praisethefacts/google-classroom-mcp
 cd google-classroom-mcp
 python -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
