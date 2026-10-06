@@ -7,8 +7,9 @@ Google Classroom account into tools an LLM can call: courses, coursework, due da
 announcements, rosters and student submissions.
 
 DeepSeek's API does not speak MCP by itself, so point an MCP-capable harness at this server
-and select a DeepSeek model there. Works with opencode, Claude Desktop, Cursor, or the bundled
-example agent (`examples/deepseek_agent.py`) that calls the DeepSeek API directly.
+and select a DeepSeek model there. Works with [DeepSeek Harness](#deepseek-harness-dsh),
+opencode, Claude Desktop, Cursor, or the bundled example agent (`examples/deepseek_agent.py`)
+that calls the DeepSeek API directly.
 
 ## Tools
 
@@ -92,6 +93,30 @@ A browser window opens; grant the read-only scopes. The refreshable token is cac
 
 If the host cannot find `google-classroom-mcp`, use the absolute path to the script inside
 your venv (Windows: `...\.venv\Scripts\google-classroom-mcp.exe`).
+
+### DeepSeek Harness (dsh)
+
+[DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) installs integrations as
+plugin bundles. Use the ready-made
+[`dsh-plugin-google-classroom`](https://github.com/praisethefacts/dsh-plugin-google-classroom)
+bundle: open **Plugins** in DSH and install
+
+```
+github:praisethefacts/dsh-plugin-google-classroom
+```
+
+or skip the bundle and load the overlay directly:
+
+```bash
+dsh web --patch examples/dsh-overlay.cordis.yml
+```
+
+Both run the server with `uvx` (no separate `pip install` needed), so only steps 1–3 above
+still apply — the Google OAuth client and one-time sign-in. Copy the overlay's `insert` row
+into `$DSH_HOME/profiles/<name>/cordis.patch.yml` to keep it across runs. DSH scrubs
+credential-looking environment variables before launching stdio servers, so keep the default
+file-based token at `~/.google-classroom-mcp/token.json` rather than `CLASSROOM_MCP_*` env
+vars.
 
 ### 5. Optional: run it from a plain DeepSeek script
 

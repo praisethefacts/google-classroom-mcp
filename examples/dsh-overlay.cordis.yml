@@ -1,0 +1,16 @@
+# Manual DeepSeek Harness overlay for the google-classroom-mcp server.
+# The dsh-plugin-google-classroom bundle carries this same row; use this file
+# when you prefer a patch instead of a bundle:
+#   dsh web --patch examples/dsh-overlay.cordis.yml
+# or merge the insert into ~/.dsh/profiles/<name>/cordis.patch.yml.
+- insert:
+    - id: mcp-google-classroom
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: google-classroom
+        transport: stdio
+        command: uvx
+        args:
+          - --from
+          - git+https://github.com/praisethefacts/google-classroom-mcp@v0.1.0
+          - google-classroom-mcp
